@@ -124,3 +124,41 @@ LIMIT 10;
 
 
 ## Funções de agregações
+
+no sql temos funcoes de agregacoes que usamos realizar operacoes aritmeticas (soma, contagem , media, minimo,maximo)
+
+- funcoes de agregacoes nao contam valores nulos
+- quando tivermos uma agregacao e utilizarmos + de 1 campo, esses campos precisam estar dentro do groupby
+
+```{sql}
+
+SELECT 
+ 
+ PRODUTO,
+ SUM(VALOR) AS VALOR_SOMADO
+FROM PRODUTOS
+
+GROUPBY PRODUTO
+
+```
+ **HAVING**
+
+HAVING E UTILIZADO PARA FILTRAR UMA INFORMACAO QUE VEIO DE UM AGREGACAO.
+
+- FILTRE APENAS AS CIDADES QUE POSSUEM + DE 100 CLIENTES
+
+**PODEMOS USAR O WHERE (DESDE QUE NAO SEJA COM AS COLUNAS AGREGADAS)**
+
+``{sql}
+
+SELECT 
+ 
+ COUNT(CLIENTES),
+ ESTADOS
+FROM CLIENTES
+GROUPBY ESTADOS
+
+GROUP BY PRODUTO
+HAVING COUNT(CLIENTES) >= 100
+
+```
